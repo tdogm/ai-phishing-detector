@@ -76,6 +76,26 @@ def load_ai_model():
 
 model, scaler = load_ai_model()
 
+PHISHING_EXAMPLE = (
+    "URGENT: Your account has been suspended. Click here immediately to verify "
+    "your password: http://fake-bank-login.com"
+)
+
+SAFE_EXAMPLE = (
+    "Hello everyone, thank you for joining our weekly project meeting. We reviewed "
+    "the latest design, discussed the testing schedule, and agreed on the next set "
+    "of assignments. The development work is moving forward as planned, and the "
+    "team will share another progress update during our regular meeting next "
+    "Tuesday. Please add your comments to the shared notes before then so we can "
+    "include them in the agenda. I appreciate everyone's time and thoughtful "
+    "feedback. Have a great afternoon, and I look forward to speaking with you "
+    "again next week. Best, Thomas"
+)
+
+
+def load_example(example_text):
+    st.session_state.email_text = example_text
+
 # -----------------------------
 # Sidebar
 # -----------------------------
@@ -235,25 +255,28 @@ st.markdown(
 st.markdown("---")
 
 # Example buttons
+if "email_text" not in st.session_state:
+    st.session_state.email_text = ""
+
 col_example1, col_example2 = st.columns(2)
 
 with col_example1:
-    phishing_example = st.button("Load Phishing Example")
+    st.button(
+        "Load Phishing Example",
+        on_click=load_example,
+        args=(PHISHING_EXAMPLE,)
+    )
 
 with col_example2:
-    safe_example = st.button("Load Safe Example")
-
-default_text = ""
-
-if phishing_example:
-    default_text = "URGENT: Your account has been suspended. Click here immediately to verify your password: http://fake-bank-login.com"
-
-if safe_example:
-    default_text = "Hi team, here are the notes from today's meeting. Please review them when you have a chance. Thanks."
+    st.button(
+        "Load Safe Example",
+        on_click=load_example,
+        args=(SAFE_EXAMPLE,)
+    )
 
 email_text = st.text_area(
     "Paste email text here:",
-    value=default_text,
+    key="email_text",
     height=220
 )
 
