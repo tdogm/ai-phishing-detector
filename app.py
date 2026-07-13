@@ -1,9 +1,13 @@
 import re
+from pathlib import Path
+
 import pandas as pd
 import tensorflow as tf
 import joblib
 import streamlit as st
 from textblob import TextBlob
+
+APP_DIR = Path(__file__).resolve().parent
 
 # -----------------------------
 # Page Setup
@@ -66,8 +70,8 @@ st.markdown("""
 # -----------------------------
 @st.cache_resource
 def load_ai_model():
-    model = tf.keras.models.load_model("phishing_model.keras")
-    scaler = joblib.load("scaler.pkl")
+    model = tf.keras.models.load_model(APP_DIR / "phishing_model.keras")
+    scaler = joblib.load(APP_DIR / "scaler.pkl")
     return model, scaler
 
 model, scaler = load_ai_model()
