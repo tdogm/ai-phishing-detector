@@ -31,9 +31,12 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - os: macos-14
-            label: macOS
-            artifact: AI-Phishing-Detector-macOS
+          - os: macos-15
+            label: macOS Apple Silicon
+            artifact: AI-Phishing-Detector-macOS-Apple-Silicon
+          - os: macos-15-intel
+            label: macOS Intel
+            artifact: AI-Phishing-Detector-macOS-Intel
           - os: windows-latest
             label: Windows
             artifact: AI-Phishing-Detector-Windows
