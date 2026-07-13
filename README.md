@@ -6,7 +6,8 @@ A cybersecurity machine-learning project that combines a TensorFlow model with s
 
 Download the newest packaged version from [GitHub Releases](https://github.com/tdogm/ai-phishing-detector/releases/latest):
 
-- **macOS:** Download `AI-Phishing-Detector-macOS.zip`, unzip it, and open `AI Phishing Detector.app`.
+- **Mac with Apple Silicon (M1 or newer):** Download `AI-Phishing-Detector-macOS-Apple-Silicon.zip`, unzip it, and open `AI Phishing Detector.app`.
+- **Mac with an Intel processor:** Download `AI-Phishing-Detector-macOS-Intel.zip`, unzip it, and open `AI Phishing Detector.app`.
 - **Windows:** Download `AI-Phishing-Detector-Windows.zip`, unzip it, and open `AI Phishing Detector.exe` inside the folder.
 
 The desktop package starts a private local server and opens the interface in your default browser. Email text stays on the computer and is not sent to a hosted service by this application.
